@@ -17,8 +17,8 @@ class VideoSerializer(serializers.ModelSerializer):
 
 class FutureMessageSerializer(serializers.ModelSerializer):
     created_by = UserSerializer(read_only=True)
-    photo = PhotoSerializer(many=True, read_only=True)
-    video = VideoSerializer(many=True, read_only=True)
+    photo = PhotoSerializer(many=True, read_only=True, source="photo_set")
+    video = VideoSerializer(many=True, read_only=True, source="video_set")
 
     class Meta:
         model = FutureMessage
